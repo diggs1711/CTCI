@@ -21,38 +21,5 @@ function isUnique(array) {
     return true;
 }
 
-function withoutAdditionalDataStructure(array) {
-    const sortedArray = array.sort()
-    for (const ind in sortedArray) {
-        if (binarySearch(sortedArray, Number(ind))) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function binarySearch(array, index) {
-    const target = array[index];
-    return binarySearchRecur(array, target, index + 1, array.length - 1)
-}
-
-function binarySearchRecur(array, target, left, right) {
-    const mid = Math.floor((left + right) / 2);
-
-    if (target === array[mid]) {
-        return true;
-    }
-
-    if (target < array[mid]) {
-        binarySearchRecur(array, target, left, mid - 1)
-    } else if (target > array[mid]) {
-        binarySearchRecur(array, target, mid + 1, right)
-    }
-
-    return false;
-}
-
 console.log(isUnique(UNIQUE))
 console.log(isUnique(RECURRENT))
-console.log(withoutAdditionalDataStructure(UNIQUE))
-console.log(withoutAdditionalDataStructure(RECURRENT))
