@@ -1,13 +1,14 @@
 /**
  *  Determine if a string has all unique characters
  * 
- *  [2,4,5,7,9] => true
+ *  "abcdefghi" => true
  * 
- *  [2,2,2,3,4] => false
+ *  "abcdeefghi" => false
  * 
  */
-const UNIQUE = [2, 4, 5, 6, 3, 1, 7, 8, 9]
-const RECURRENT = [2, 2, 3, 4, 6, 71]
+const UNIQUE = "abcdefghi"
+const RECURRENT = "abcdeefghi"
+const RECURRENT2 = "banana"
 
 function isUnique(array) {
     let hashMap = {}
@@ -23,3 +24,4 @@ function isUnique(array) {
 
 console.log(isUnique(UNIQUE))
 console.log(isUnique(RECURRENT))
+console.log(isUnique(RECURRENT2))
