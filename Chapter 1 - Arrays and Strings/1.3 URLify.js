@@ -1,3 +1,4 @@
+k
 /**
  * Replace all spaces in a string with %20
  * You are also given the true length of the string

@@ -2,4 +2,4 @@
 
 Solution to problems in cracking the coding interview
 
-Written in javscript
+Written in Javascript
