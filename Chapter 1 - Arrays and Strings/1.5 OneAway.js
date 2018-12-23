@@ -20,7 +20,7 @@ function oneEditAway(str1, str2) {
         }
     }
 
-    return s.length > 1 ? false : true
+    return s.size > 1 ? false : true
 }
 
 //Test Cases
@@ -29,3 +29,5 @@ console.log(oneEditAway("pales", "pale")) //true
 console.log(oneEditAway("pale", "bale")) //true
 console.log(oneEditAway("pale", "bake")) //false
 console.log(oneEditAway("pale", "pa")) //false
+console.log(oneEditAway("", "")) //true
+console.log(oneEditAway("banan", "banana")) //true
