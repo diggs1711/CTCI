@@ -3,29 +3,51 @@ import TreeTraversals from "./Utils/TreeTraversals.js";
 import Graph from "./Utils/Graph.js"
 import GraphSearch from "./Utils/GraphSearch.js";
 
-const graph = new Graph()
-graph.addNode(0, 1)
-graph.addNode(1, 2)
-graph.addNode(2, 0)
-graph.addNode(2, 3)
-graph.addNode(3, 2)
-graph.addNode(4, 6)
-graph.addNode(5, 4)
-graph.addNode(6, 5)
+const graph = new Graph(true)
+graph.addNode(0)
+graph.addNode(1)
+graph.addNode(2)
+graph.addNode(3)
+graph.addNode(4)
+graph.addNode(5)
+graph.addNode(6)
 
-//graph.DepthFirst(0, console.log)
-graph.breadthFirst(0, console.log)
-/*
-const n = new TreeNode(3)
-const n1 = n.addLeft(2)
-const n2 = n.addRight(5)
-const n3 = n1.addLeft(1)
-const n4 = n1.addRight(2)
-const n5 = n2.addLeft(4)
-const n6 = n2.addRight(6)
+graph.addEdge(0, 1)
+graph.addEdge(1, 2)
+graph.addEdge(2, 0)
+graph.addEdge(2, 3)
+graph.addEdge(3, 2)
+graph.addEdge(4, 6)
+graph.addEdge(5, 4)
+graph.addEdge(6, 5)
 
-const traverse = new TreeTraversals()
-traverse.IN_ORDER(n, console.log)
-//traverse.PRE_ORDER(n, console.log)
-//traverse.POST_ORDER(n, console.log)
-*/
+function isRouteDFS(source, dest) {
+    if (source === dest) return true;
+    const sourceNode = graph.getNode(source)
+    const destNode = graph.getNode(dest)
+    const visited = new Map()
+    let found = false;
+
+    function explore(node) {
+        if (visited.has(node.key)) return
+
+        if (node.key == destNode.key) {
+            found = true;
+            return;
+        }
+
+        visited.set(node.key, true)
+
+        for (const child of node.children) {
+            if (!visited.has(child.key)) {
+                explore(child)
+            }
+        }
+    }
+    explore(sourceNode)
+    return found;
+}
+
+console.log(graph.print())
+console.log(isRouteDFS(1, 3)) //true
+console.log(isRouteDFS(1, 4)) // false
