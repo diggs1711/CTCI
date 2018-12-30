@@ -1,4 +1,5 @@
 import Graph from "./Utils/Graph.js"
+import Queue from "./Utils/Queue.js";
 
 const graph = new Graph(true)
 graph.addNode(0)
@@ -45,6 +46,33 @@ function isRouteDFS(source, dest) {
     return found;
 }
 
+function isRouteBFS(source, dest) {
+    const sourceNode = graph.getNode(source)
+    const destNode = graph.getNode(dest)
+    const queue = new Queue()
+    const visited = new Map()
+
+    if (sourceNode.key === destNode.key) return true
+
+    queue.enqueue(sourceNode)
+
+    while (!queue.isEmpty()) {
+        const currentNode = queue.dequeue()
+        if (currentNode.key === destNode.key) return true
+        visited.set(currentNode.key, true)
+
+        for (const child of currentNode.children) {
+            if (!visited.has(child.key)) {
+                queue.enqueue(child)
+            }
+        }
+    }
+    return false
+}
+
 console.log(graph.print())
 console.log(isRouteDFS(1, 3)) //true
 console.log(isRouteDFS(1, 4)) // false
+
+console.log(isRouteBFS(1, 3)) //true
+console.log(isRouteBFS(1, 4)) // false
