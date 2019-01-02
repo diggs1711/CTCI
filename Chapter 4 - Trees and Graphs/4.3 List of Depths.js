@@ -29,8 +29,6 @@ function createListOfNodes(root) {
 function createListOfNodesR(root, depth = 0, listOfNodes = {}) {
     if (root === null) return
 
-    visited.set(root.name, true)
-
     if (!listOfNodes[depth]) {
         listOfNodes[depth] = []
     }
