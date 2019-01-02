@@ -10,13 +10,39 @@ function getHeight(root) {
     return Math.max(getHeight(root.left), getHeight(root.root)) + 1
 }
 
+
+/**
+ * Time complexity is O(N log(N))
+ * @param {TreeNode} root 
+ */
 function isBalanced(root) {
-    if (root == null) return
+    if (root == null) return true
 
     const leftHeight = getHeight(root.left)
     const rightHeight = getHeight(root.right)
 
-    return Math.abs(leftHeight - rightHeight) < 2
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+        return false
+    } else {
+        return isBalanced(root.left) && isBalanced(root.right)
+    }
+}
+
+/**
+ * O(N) solution
+ */
+
+function checkHeight(root) {
+    if (root == null) return -1
+
+    const leftHeight = checkHeight(root.left)
+    if (leftHeight === -Infinity) return -Infinity;
+
+    const rightHeight = checkHeight(root.right)
+    if (rightHeight == -Infinity) return -Infinity
+
+    if (Math.abs(leftHeight - rightHeight) > 1) return -Infinity
+    return Math.max(leftHeight, rightHeight) + 1;
 }
 
 const root = new TreeNode(6)
@@ -30,4 +56,5 @@ const g = b.addRight(10)
 const h = g.addLeft(9)
 
 const height = isBalanced(root)
+console.log(checkHeight(root) > 0)
 console.log(height)
