@@ -15,4 +15,8 @@ export default class TreeNode {
         this.right = newNode
         return newNode
     }
+
+    getVal() {
+        return this.val;
+    }
 }
