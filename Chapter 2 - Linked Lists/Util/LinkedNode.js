@@ -3,9 +3,9 @@
  */
 
 export default class Node {
-    constructor(data = null, next = null) {
+    constructor(data = null) {
         this.data = data
-        this.next = next
+        this.next = null
     }
 
     appendToTail(d) {
@@ -15,6 +15,7 @@ export default class Node {
             n = n.next
         }
         n.next = newTail
+        return newTail
     }
 
     deleteNode(head, d) {
