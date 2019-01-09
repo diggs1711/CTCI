@@ -68,6 +68,16 @@ function sum(h1, h2) {
     return resultHead
 }
 
+/**
+ * @param {Node} h1 
+ * @param {Node} h2 
+ * @description sum two linked lists when least significant bit and the end
+ */
+
+function sumB(h1, h2) {
+
+}
+
 const head1 = new Node(7)
 head1.appendToTail(1)
 head1.appendToTail(6)
