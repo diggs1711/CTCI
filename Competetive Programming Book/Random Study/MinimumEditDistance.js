@@ -21,8 +21,6 @@
 
 
 function editDistanceRecursive(str1, str2) {
-
-
     const editDistanceHelper = (len1, len2, mem) => {
         //if one string is empty, the cost of transforming
         //the other string into the empty string is the length
@@ -34,8 +32,8 @@ function editDistanceRecursive(str1, str2) {
         if (!mem[len1][len2]) {
             const cost = str1.charAt(len1 - 1) === str2.charAt(len2 - 1) ? 0 : 1
 
-            const result = Math.min(editDistanceHelper(len1 - 1, len2, mem) + 1, //cost of deleting a character from s
-                editDistanceHelper(len1, len2 - 1, mem) + 1, //cost of deleting a character from t
+            const result = Math.min(editDistanceHelper(len1 - 1, len2, mem) + 1, //cost of deleting a character from s1
+                editDistanceHelper(len1, len2 - 1, mem) + 1, //cost of deleting a character from s2
                 editDistanceHelper(len1 - 1, len2 - 1, mem) + cost) // cost of deleting a character from both
 
             mem[len1][len2] = result
@@ -46,9 +44,12 @@ function editDistanceRecursive(str1, str2) {
 
     let mem = Array(str2.length).fill(null).map(() => Array(str1.length).fill(null))
     const r = editDistanceHelper(str1.length, str2.length, mem)
-    console.log(mem)
     return r;
 }
 
 console.log(editDistanceRecursive("kitten", "sitting"))
 //console.log(editDistanceRecursive("saturdaydidiimcuaolfkoalllqpa", "sundaydkdkjgjskslskldkkkkalrurnwciiiw"))
+
+function minEditDistanceIterative(str1, str2) {
+
+}

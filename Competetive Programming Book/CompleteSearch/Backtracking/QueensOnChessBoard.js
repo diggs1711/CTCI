@@ -50,7 +50,7 @@ function isValid(row, col, board) {
     }
 
     //check diagnol current position to top left
-    for (let r = row, c = col; r >= 0 && c >= 0; r--, c--) {
+    for (let r = row, c = col; r >= 0 && c >= 0; r--, cj--) {
         if (board[r][c]) return false;
     }
 
