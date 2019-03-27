@@ -13,7 +13,8 @@ function createListOfNodes(root) {
         listOfDepths.set(depth, currentLevel)
         let parents = currentLevel.splice()
         currentLevel = []
-        depth = depth + 1
+        depth++
+        
         for (const parent of parents) {
             if (parent.left != null) {
                 currentLevel.push(parent.left)
